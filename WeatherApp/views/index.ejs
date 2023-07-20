@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"/>
+    <title>Weather</title>
+</head>
+<body>
+    <main>
+        <h1>Weather App</h1>
+        <form action="/weather" action="GET">
+            <fieldset>
+                <legend>City</legend>
+                <input type="text" name="city" id="city">
+                <input type="submit" value="Get Weather">
+            </fieldset>
+        </form>
+        <% if(error){ %>
+            <p><%=error%></p>
+        <%} else if(weather) { %>
+        <div class="weather__result">
+            <h2>Weather for <%= weather.name %> <%= weather.sys.country%></h2>
+            <div class="temperature">
+                <p>Temperature : <%= weather.main.temp %>º</p>
+            </div>
+            <div class="max-temp">
+               <p>Max Temperature : <%= weather.main.temp_max %>º</p>
+            </div>
+            <div class="min-temp">
+                <p>Min Temperature : <%= weather.main.temp_min %>º</p>
+            </div>
+            <div class="humidity">
+                <p>Humidity : <%= weather.main.humidity %> %</p>
+            </div>
+            <div class="pressure">
+                <p>Pressure : <%= weather.main.pressure %>P</p>
+            </div>
+        </div>
+        <%}%>
+    </main>
+</body>
+</html>
